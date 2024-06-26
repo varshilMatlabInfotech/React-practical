@@ -50,7 +50,8 @@ localStorage.setItem('data', JSON.stringify(data))
      <Grid columns={5}>
      <GridRow >
   {userData.map((e)=>{
-    return <>
+    if(!e.isBooked){
+        return <>
       <GridColumn>
       <Card>
     <Image src={e.avatar_url} wrapped ui={false} />
@@ -67,6 +68,8 @@ localStorage.setItem('data', JSON.stringify(data))
   
 
     </>
+    }
+  
   })}
     </GridRow>
     </Grid>

@@ -4,12 +4,17 @@ import App from './App';
 import './index.css';
 import Store from 'utils/store';
 import ErrorBoundaryProvider from 'contexts/errorBoundary/index';
+import GlobalProvider from 'contexts/userContext/index';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <ErrorBoundaryProvider>
-    <Store>
+<GlobalProvider>
+     {/* <Store> */}
       <App />
-    </Store>
+    {/* </Store> */}
+</GlobalProvider>
+ 
+   
   </ErrorBoundaryProvider>,
 );
 

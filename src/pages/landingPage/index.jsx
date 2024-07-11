@@ -1,13 +1,19 @@
 import React, { useEffect, useState } from 'react';
-import { Tab, Tabs } from '../../../node_modules/@material-ui/core/index';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
+import { useSelector, useDispatch } from 'react-redux';
+import { getAllUsers } from 'reducers/userActions';
+import DisplayUser from 'common/components/DisplayUser';
 
 const LandingPage = () => {
   const [state, setState] = useState({
     tabValue: 0,
   });
+  const dispatch = useDispatch();
+  const users = useSelector((state) => state?.user?.allUsers);
 
   useEffect(() => {
-   
+    dispatch(getAllUsers());
   }, []);
 
   return (
@@ -19,7 +25,13 @@ const LandingPage = () => {
         </Tabs>
       </div>
 
-      <div>{state.tabValue === 0 ? <div></div> : <div></div>}</div>
+      <div>
+        {state.tabValue === 0 ? (
+          <div>{users?.map((user) => !user.isBookmarked && <DisplayUser user={user} key={user.id} />)}</div>
+        ) : (
+          <div>{users?.map((user) => user.isBookmarked && <DisplayUser user={user} key={user.id} />)}</div>
+        )}
+      </div>
     </div>
   );
 };

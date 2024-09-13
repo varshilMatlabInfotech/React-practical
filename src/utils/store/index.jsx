@@ -3,7 +3,7 @@ import {createStore, applyMiddleware} from 'redux';
 import thunk from 'redux-thunk';
 import {Provider} from 'react-redux';
 import {composeWithDevTools} from 'redux-devtools-extension';
-import rootReducer from 'reducers/index';
+import rootReducer from "store/reducers/index.js"
 import PropTypes from 'prop-types';
 
 let reduxStore;

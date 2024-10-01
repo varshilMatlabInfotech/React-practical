@@ -44,6 +44,7 @@ function BookMarkList() {
       const newDatas = newData.filter((value) => value?.login.toLowerCase().includes(search.toLowerCase()));
       setNewData(newDatas);
     }
+    
   }, [search]);
   return (
     <div className="w-1/2 p-4">

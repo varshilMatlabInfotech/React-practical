@@ -1,7 +1,19 @@
 .MuiDataGrid-cell--textLeft {
   justify-content: center !important;
 }
+#card{
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  height: 100px;
+  border: 1px solid black;
 
+}
+.card-image{
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+}
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

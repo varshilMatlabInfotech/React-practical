@@ -7,9 +7,9 @@ import ErrorBoundaryProvider from 'contexts/errorBoundary/index';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <ErrorBoundaryProvider>
-    <Store>
+    {/* <Store> */}
       <App />
-    </Store>
+    {/* </Store>   */}
   </ErrorBoundaryProvider>,
 );
 

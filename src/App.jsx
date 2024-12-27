@@ -2,6 +2,8 @@ import React from 'react';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { RoutePath } from 'common/enums/enumConstant';
 import Page404 from 'pages/page404/index';
+import Home from 'pages/home/index';
+import BookMark from 'pages/bookmark/index';
 
 function App() {
   return (
@@ -9,6 +11,8 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route exact path="/" element={<div>React-practical</div>} />
+          <Route exact path="/home" element={<Home/>} />
+          <Route exact path="/bookmark" element={<BookMark/>} />
           <Route path={RoutePath.PAGE_404} element={<Page404/>}/>
 
           {/* Navigate to '/404' page when user entered unknown/non-declare path */}

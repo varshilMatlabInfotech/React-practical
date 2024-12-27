@@ -57,3 +57,4 @@ export const cookie = {
   remove,
   clean,
 };
+

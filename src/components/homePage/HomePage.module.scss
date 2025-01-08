@@ -1,0 +1,23 @@
+.textfield {
+  border-radius: 5px;
+  border: 1px solid #1976d2;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+}
+
+.mainWrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin: 30px;
+  .cardMainSection {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px;
+    .bookmark {
+      cursor: pointer;
+    }
+  }
+}

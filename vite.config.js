@@ -1,10 +1,4 @@
-// import { defineConfig } from 'vite'
-// import react from '@vitejs/plugin-react'
 
-// // https://vitejs.dev/config/
-// export default defineConfig({
-//   plugins: [react()],
-// })
 
 //// <!-- this file for the Vite which load Front-end vert fast for the development. Copied from https://github.com/joaopaulomoraes/reactjs-vite-tailwindcss-boilerplate/blob/main/src/index.tsx-->
 import { defineConfig } from 'vite';

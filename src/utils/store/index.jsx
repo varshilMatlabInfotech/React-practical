@@ -14,7 +14,7 @@ const configureStore = () => {
 
 reduxStore = configureStore();
 
-const Store = ({children}) => <Provider store={reduxStore}>{children}</Provider>;
+export const Store = ({children}) => <Provider store={reduxStore}>{children}</Provider>;
 Store.propTypes = {
   children: PropTypes.node,
 };

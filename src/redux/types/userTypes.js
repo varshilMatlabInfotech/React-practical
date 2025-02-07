@@ -1,0 +1,3 @@
+export const GET_USERS = 'GET_USERS';
+export const GET_BOOKMARK_USERS = 'GET_BOOKMARK_USERS';
+export const ADD_BOOKMARK_USERS = 'ADD_BOOKMARK_USERS';

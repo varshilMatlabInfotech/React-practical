@@ -1,21 +1,33 @@
-import React from 'react';
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
-import { RoutePath } from 'common/enums/enumConstant';
-import Page404 from 'pages/page404/index';
+ 
+import React, { useState } from 'react';
+import UsersTab from 'Components/UsersTab';
+import BookmarksTab from 'Components/BookmarksTab';
+import { Provider } from 'react-redux';
+import store from './store';
 
 function App() {
-  return (
-    <div>
-      <BrowserRouter>
-        <Routes>
-          <Route exact path="/" element={<div>React-practical</div>} />
-          <Route path={RoutePath.PAGE_404} element={<Page404/>}/>
+  const [activeTab, setActiveTab] = useState('users');
 
-          {/* Navigate to '/404' page when user entered unknown/non-declare path */}
-          <Route path="*" element={<Navigate to={RoutePath.PAGE_404} replace/>}/>
-        </Routes>
-      </BrowserRouter>
-    </div>
+  return (
+    <Provider store={store}>
+      <div className="container mx-auto p-4">
+        <div className="flex border-b mb-4">
+          <button
+            className={`mr-4 pb-2 ${activeTab === 'users' ? 'border-b-2 border-blue-500' : ''}`}
+            onClick={() => setActiveTab('users')}
+          >
+            Users
+          </button>
+          <button
+            className={`pb-2 ${activeTab === 'bookmarks' ? 'border-b-2 border-blue-500' : ''}`}
+            onClick={() => setActiveTab('bookmarks')}
+          >
+            Bookmarked Users
+          </button>
+        </div>
+        {activeTab === 'users' ? <UsersTab /> : <BookmarksTab />}
+      </div>
+    </Provider>
   );
 }
 

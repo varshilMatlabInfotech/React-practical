@@ -10,7 +10,7 @@ function App() {
         <Routes>
           <Route exact path="/" element={<div>React-practical</div>} />
           <Route path={RoutePath.PAGE_404} element={<Page404/>}/>
-
+          
           {/* Navigate to '/404' page when user entered unknown/non-declare path */}
           <Route path="*" element={<Navigate to={RoutePath.PAGE_404} replace/>}/>
         </Routes>

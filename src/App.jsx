@@ -1,20 +1,43 @@
-import React from 'react';
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
-import { RoutePath } from 'common/enums/enumConstant';
-import Page404 from 'pages/page404/index';
+import React, { useState } from 'react';
+import UsersList from './components/UsersList';
+import BookmarkedUsers from './components/BookmarkedUsers';
+import { FaUsers, FaBookmark } from 'react-icons/fa';
 
 function App() {
-  return (
-    <div>
-      <BrowserRouter>
-        <Routes>
-          <Route exact path="/" element={<div>React-practical</div>} />
-          <Route path={RoutePath.PAGE_404} element={<Page404/>}/>
+  const [activeTab, setActiveTab] = useState('users');
 
-          {/* Navigate to '/404' page when user entered unknown/non-declare path */}
-          <Route path="*" element={<Navigate to={RoutePath.PAGE_404} replace/>}/>
-        </Routes>
-      </BrowserRouter>
+  return (
+    <div className="min-h-screen bg-gray-100 p-4">
+      <div className="max-w-4xl mx-auto">
+        <div className="bg-white rounded-lg shadow-md p-4">
+          <div className="flex mb-4 border-b">
+            <button
+              className={`flex items-center px-4 py-2 ${
+                activeTab === 'users'
+                  ? 'text-blue-600 border-b-2 border-blue-600'
+                  : 'text-gray-600'
+              }`}
+              onClick={() => setActiveTab('users')}
+            >
+              <FaUsers className="mr-2" />
+              Users
+            </button>
+            <button
+              className={`flex items-center px-4 py-2 ${
+                activeTab === 'bookmarks'
+                  ? 'text-blue-600 border-b-2 border-blue-600'
+                  : 'text-gray-600'
+              }`}
+              onClick={() => setActiveTab('bookmarks')}
+            >
+              <FaBookmark className="mr-2" />
+              Bookmarked Users
+            </button>
+          </div>
+          
+          {activeTab === 'users' ? <UsersList /> : <BookmarkedUsers />}
+        </div>
+      </div>
     </div>
   );
 }

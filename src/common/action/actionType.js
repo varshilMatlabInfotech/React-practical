@@ -1,0 +1,5 @@
+export const ActionType = {
+    ALL_BOOKMARK: 'ALL_BOOKMARK',
+    ADD_BOOKMARK: 'ADD_BOOKMARK',
+    DELETE_BOOKMARK: 'DELETE_BOOKMARK',
+};

@@ -1,15 +1,17 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './App';
-import './index.css';
-import Store from 'utils/store';
-import ErrorBoundaryProvider from 'contexts/errorBoundary/index';
+import { createRoot } from "react-dom/client";
+import "./index.css";
+import App from "./App.jsx";
+import { Provider } from "react-redux";
+import { store, persistor } from "./store/store.js";
+import { PersistGate } from "redux-persist/integration/react";
+import AppWrapper from "./components/AppWrapper.jsx";
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <ErrorBoundaryProvider>
-    <Store>
-      <App />
-    </Store>
-  </ErrorBoundaryProvider>,
+createRoot(document.getElementById("root")).render(
+  <Provider store={store}>
+    <PersistGate persistor={persistor}>
+      <AppWrapper>
+        <App />
+      </AppWrapper>
+    </PersistGate>
+  </Provider>
 );
-

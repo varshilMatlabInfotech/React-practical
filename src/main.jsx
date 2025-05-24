@@ -1,15 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App';
 import './index.css';
-import Store from 'utils/store';
-import ErrorBoundaryProvider from 'contexts/errorBoundary/index';
+import App from './App';
+import store from './store/store.jsx';
+import { Provider } from 'react-redux';
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <ErrorBoundaryProvider>
-    <Store>
-      <App />
-    </Store>
-  </ErrorBoundaryProvider>,
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <Provider store={store}>
+    <App />
+  </Provider>
 );
-

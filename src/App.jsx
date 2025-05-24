@@ -1,20 +1,28 @@
-import React from 'react';
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
-import { RoutePath } from 'common/enums/enumConstant';
-import Page404 from 'pages/page404/index';
+import React, { useState } from 'react';
+import UserList from './component/UserList.jsx';
 
 function App() {
+  const [activeTab, setActiveTab] = useState('users');
+  const [searchText, setSearchText] = useState('');
+
   return (
     <div>
-      <BrowserRouter>
-        <Routes>
-          <Route exact path="/" element={<div>React-practical</div>} />
-          <Route path={RoutePath.PAGE_404} element={<Page404/>}/>
+      <div>
+        <button onClick={() => setActiveTab('users')}>Users</button>
+        <button onClick={() => setActiveTab('bookmarked')}>Bookmarked Users</button>
+        <input
+          type="text"
+          placeholder="Search users..."
+          value={searchText}
+          onChange={(e) => setSearchText(e.target.value)}
+          style={{ marginLeft: '1rem' }}
+        />
+      </div>
 
-          {/* Navigate to '/404' page when user entered unknown/non-declare path */}
-          <Route path="*" element={<Navigate to={RoutePath.PAGE_404} replace/>}/>
-        </Routes>
-      </BrowserRouter>
+      <UserList
+        isBookmarkedTab={activeTab === 'bookmarked'}
+        searchText={searchText}
+      />
     </div>
   );
 }

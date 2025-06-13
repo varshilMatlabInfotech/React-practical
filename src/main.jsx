@@ -2,14 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import './index.css';
-import Store from 'utils/store';
-import ErrorBoundaryProvider from 'contexts/errorBoundary/index';
+// import { BrowserRouter } from "react-router";
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <ErrorBoundaryProvider>
-    <Store>
+      // <BrowserRouter>
+      
       <App />
-    </Store>
-  </ErrorBoundaryProvider>,
+      // </BrowserRouter>
 );
 

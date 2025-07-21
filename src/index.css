@@ -5,3 +5,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  margin: 20px;
+}

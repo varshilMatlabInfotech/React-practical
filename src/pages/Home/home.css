@@ -1,0 +1,46 @@
+.bookmarkLink {
+  position: absolute;
+  background-color: antiquewhite;
+  padding: 10px;
+  right: 10px;
+  border-radius: 20px;
+}
+
+.search {
+  text-align: center;
+  margin: 50px;
+}
+
+input {
+  border: 1px solid black !important;
+  border-radius: 10px;
+}
+
+.mainCardWrapepr {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.card {
+  position: relative;
+  border: 2px solid black;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+}
+
+.bookBtn {
+  background-color: antiquewhite;
+  padding: 7px;
+  border-radius: 10px;
+}
+
+.userImage {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  margin-right: 15px;
+}

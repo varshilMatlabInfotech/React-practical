@@ -1,10 +1,11 @@
 import React from 'react';
-import {createStore, applyMiddleware} from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import {Provider} from 'react-redux';
-import {composeWithDevTools} from 'redux-devtools-extension';
+import { Provider } from 'react-redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
 import rootReducer from 'reducers/index';
 import PropTypes from 'prop-types';
+import { BookmarkProvider } from 'contexts/bookmarkContext';
 
 let reduxStore;
 
@@ -14,7 +15,11 @@ const configureStore = () => {
 
 reduxStore = configureStore();
 
-const Store = ({children}) => <Provider store={reduxStore}>{children}</Provider>;
+const Store = ({ children }) => (
+  <Provider store={reduxStore}>
+    <BookmarkProvider>{children}</BookmarkProvider>
+  </Provider>
+);
 Store.propTypes = {
   children: PropTypes.node,
 };

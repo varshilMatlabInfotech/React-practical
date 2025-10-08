@@ -1,7 +1,5 @@
-import React from 'react';
+import Users from 'modules/users/Users';
 
-const UsersPage = () => {
-  return <div>index</div>;
-};
+const UsersPage = () => <Users />;
 
 export default UsersPage;

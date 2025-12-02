@@ -1,18 +1,19 @@
 import React from 'react';
-import {createStore, applyMiddleware} from 'redux';
-import thunk from 'redux-thunk';
-import {Provider} from 'react-redux';
-import {composeWithDevTools} from 'redux-devtools-extension';
+import { configureStore } from '@reduxjs/toolkit';
+import { Provider } from 'react-redux';
 import rootReducer from 'reducers/index';
 import PropTypes from 'prop-types';
 
 let reduxStore;
 
-const configureStore = () => {
-  return createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));
+const createStore = () => {
+  return configureStore({
+    reducer: rootReducer,
+    devTools: process.env.NODE_ENV !== 'production',
+  });
 };
 
-reduxStore = configureStore();
+reduxStore = createStore();
 
 const Store = ({children}) => <Provider store={reduxStore}>{children}</Provider>;
 Store.propTypes = {

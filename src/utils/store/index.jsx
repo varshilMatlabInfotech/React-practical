@@ -1,20 +1,28 @@
-import React from 'react';
-import {createStore, applyMiddleware} from 'redux';
-import thunk from 'redux-thunk';
-import {Provider} from 'react-redux';
-import {composeWithDevTools} from 'redux-devtools-extension';
-import rootReducer from 'reducers/index';
 import PropTypes from 'prop-types';
+import { Provider } from 'react-redux';
+import rootReducer from 'reducers/index';
+import { createStore } from 'redux';
+import { persistReducer, persistStore } from 'redux-persist';
+import { PersistGate } from 'redux-persist/integration/react';
+import storage from 'redux-persist/lib/storage';
 
-let reduxStore;
-
-const configureStore = () => {
-  return createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));
+const persistConfig = {
+  key: 'user',
+  storage,
 };
 
-reduxStore = configureStore();
+const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-const Store = ({children}) => <Provider store={reduxStore}>{children}</Provider>;
+let store = createStore(persistedReducer);
+let persistor = persistStore(store);
+
+const Store = ({ children }) => (
+  <Provider store={store}>
+    <PersistGate loading={null} persistor={persistor}>
+      {children}
+    </PersistGate>
+  </Provider>
+);
 Store.propTypes = {
   children: PropTypes.node,
 };

@@ -1,7 +1,20 @@
-.MuiDataGrid-cell--textLeft {
-  justify-content: center !important;
-}
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+@layer base {
+  body {
+    @apply bg-gray-50 text-gray-900 antialiased;
+  }
+}
+
+@layer components {
+  .scroll-panel {
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+}

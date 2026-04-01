@@ -1,7 +1,9 @@
-.MuiDataGrid-cell--textLeft {
-  justify-content: center !important;
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #f5f5f5;
+  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;

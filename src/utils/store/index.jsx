@@ -1,20 +1,19 @@
 import React from 'react';
-import {createStore, applyMiddleware} from 'redux';
-import thunk from 'redux-thunk';
-import {Provider} from 'react-redux';
-import {composeWithDevTools} from 'redux-devtools-extension';
-import rootReducer from 'reducers/index';
+import { Provider } from 'react-redux';
+import { configureStore } from '@reduxjs/toolkit';
 import PropTypes from 'prop-types';
+import rootReducer from 'reducers/index';
+import { bookmarksPersistenceMiddleware } from 'middleware/bookmarksPersistence';
 
-let reduxStore;
+const reduxStore = configureStore({
+  reducer: rootReducer,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(bookmarksPersistenceMiddleware),
+  devTools: true,
+});
 
-const configureStore = () => {
-  return createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));
-};
+const Store = ({ children }) => <Provider store={reduxStore}>{children}</Provider>;
 
-reduxStore = configureStore();
-
-const Store = ({children}) => <Provider store={reduxStore}>{children}</Provider>;
 Store.propTypes = {
   children: PropTypes.node,
 };
